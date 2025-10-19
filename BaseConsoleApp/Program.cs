@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 
 class MovieTicketApp
 {
@@ -22,55 +23,54 @@ class MovieTicketApp
                 break;
             Console.WriteLine("Name cannot be empty. Please try again.");
         }
-
         // Ask for user's age
-        while (true)
-        {
-            Console.Write("Enter your age: ");
-            if (int.TryParse(Console.ReadLine(), out age) && age > 0)
-                break;
-            Console.WriteLine("Invalid age. Please enter a positive number.");
-        }
-
-        // Ticket selection with validation
-        while (true)
-        {
-            Console.WriteLine("\nSelect Ticket Type:");
-            Console.WriteLine("1: Child Ticket (€5) - under 12 years");
-            Console.WriteLine("2: Adult Ticket (€10) - 12 to 64 years");
-            Console.WriteLine("3: Senior Ticket (€7) - 65+ years");
-
-            Console.Write("Enter choice (1-3): ");
-            if (int.TryParse(Console.ReadLine(), out ticketChoice))
+            while (true)
             {
-                if (ticketChoice == 1 && age < 12)
-                {
-                    price = 5;
-                    ticketType = "Child Ticket";
+                Console.Write("Enter your age: ");
+                if (int.TryParse(Console.ReadLine(), out age) && age > 0)
                     break;
-                }
-                else if (ticketChoice == 2 && age >= 12 && age <= 64)
+                Console.WriteLine("Invalid age. Please enter a positive number.");
+            }
+            
+            // Ticket selection with validation
+            while (true)
+            {
+                Console.WriteLine("\nSelect Ticket Type:");
+                Console.WriteLine("1: Child Ticket (€5) - under 12 years");
+                Console.WriteLine("2: Adult Ticket (€10) - 12 to 64 years");
+                Console.WriteLine("3: Senior Ticket (€7) - 65+ years");
+
+                Console.Write("Enter choice (1-3): ");
+                if (int.TryParse(Console.ReadLine(), out ticketChoice))
                 {
-                    price = 10;
-                    ticketType = "Adult Ticket";
-                    break;
-                }
-                else if (ticketChoice == 3 && age >= 65)
-                {
-                    price = 7;
-                    ticketType = "Senior Ticket";
-                    break;
+                    if (ticketChoice == 1 && age < 12)
+                    {
+                        price = 5;
+                        ticketType = "Child Ticket";
+                        break;
+                    }
+                    else if (ticketChoice == 2 && age >= 12 && age <= 64)
+                    {
+                        price = 10;
+                        ticketType = "Adult Ticket";
+                        break;
+                    }
+                    else if (ticketChoice == 3 && age >= 65)
+                    {
+                        price = 7;
+                        ticketType = "Senior Ticket";
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid selection for your age group. Please try again.\n");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid selection for your age group. Please try again.\n");
+                    Console.WriteLine("Invalid input. Please enter 1, 2, or 3.");
                 }
             }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter 1, 2, or 3.");
-            }
-        }
 
         // Discount Code
         finalPrice = price;
