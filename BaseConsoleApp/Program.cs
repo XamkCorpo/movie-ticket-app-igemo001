@@ -77,7 +77,7 @@ class MovieTicketApp
         while (true)
         {
             Console.Write("\nDo you have a discount code? (yes/no): ");
-            string hasCode = Console.ReadLine().ToLower();
+            string hasCode = Console.ReadLine().Trim().ToLower();
 
             if (hasCode == "yes")
             {
