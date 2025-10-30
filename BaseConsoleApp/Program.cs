@@ -14,7 +14,7 @@ class MovieTicketApp
         string discountCode = "";
         bool discountApplied = false;
 
-        // Ask for user's name
+        // Ask for user's name test
         while (true)
         {
             Console.Write("Enter your name: ");
